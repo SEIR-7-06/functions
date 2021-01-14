@@ -42,8 +42,6 @@ Using functions is another application of DRY. Don't Repeat Yourself. With a fun
 <br>
 <hr>
 
-11:05
-
 ## DEFINING A FUNCTION
 
 &#x1F535; **Watch**
@@ -128,7 +126,6 @@ const printBoo = () => {
 
 <br>
 <hr>
-11:22
 
 ## NAMING FUNCTIONS
 
