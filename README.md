@@ -2,408 +2,459 @@
 
 _After this lesson students will be able to:_
 
-* Write an arrow function with a parameter
-* Write an arrow function with multiple parameters and a return value
+* Define a function
+* Understand function parameters and arguments
+* Define a function with a return value
+* Combine functions with conditionals and loops
 
 ---
 
 # FUNCTIONS
 
-### BLOCK
+<!-- ### REVIEW
 
-Conditionals _skip_ lines of code within a block `{ ... } ` if a condition is not true:
+Conditions let us control whether or not a piece of code will inside a block of code. `{...}`
 
 ```javascript
-if (BOOLEAN EXPRESSION) {
-	// code might get skipped
+const isSunny = false;
+
+if (isSunny) {
+	console.log('Lay out in the grass');
 }
 ```
 
-Loops _repeat_ lines of code within a block `{ ... }` according to our instructions:
+Loops let us _repeat_ lines of code within a block `{ ... }` according to our instructions:
 
 ```javascript
-while (BOOLEAN EXPRESSION) {
-	// code is repeated
+const num = 0;
+
+while (num < 5) {
+	console.log('Are we there yet?');
+	num++;
 }
 ```
 
-We can also control the flow of our code with functions. Functions act like variables and **store** code within a block `{ ... } ` for use later, and for repeated uses.
+```js
+const fruits ['apple', 'banana', 'orange', 'pear'];
 
-```javascript
-const func = () => {
-	// code to execute later
+for (let i = 0; i <= 5; i++) {
+	console.log(fruits[i]);
 }
-```
+``` -->
 
-### WHY FUNCTIONS?
+## WHAT IS A FUNCTION?
 
-Using functions is another application of DRY. Don't Repeat Yourself. With a function, you can store code that can be used conveniently as many times as you wish, without having to rewrite the code each time.
+Functions are a powerful construct in programming that allow us to organize our programs into chunks. We can think of a function like a black box that take in some input and returns an output.
 
-<br>
-<hr>
+![Function-Machine](./images/function_machine.png)
+
+Say for example, we wanted a function that would tell us the first item on our grocery list. We could create a function that would take a grocery list as its input and return the first item on the list as its output.
 
 ## DEFINING A FUNCTION
 
-&#x1F535; **Watch**
+We will start with the basic structure for now and not worry about inputs and output.
 
-Write a function that logs "Boo!" to the console.
-
+To define a function we include the `function` keyword followed by the function name, a set of parentheses and then the body of the function.
 ```javascript
-const printBoo = () => {
-	console.log('======');
-	console.log('Boo!');
-	console.log('======');
-};
+function func() {
+	console.log('This should be called later');
+}
 ```
+This code by itself will not run. To run this code we can call or **invoke** the function like so.
 
-The code will not run yet. The function needs to be **invoked**.
+```js
+func();
+```
+To call the function simply include the name of the function followed by a set of openning and closing parentheses.
+
+### WHY FUNCTIONS?
+
+Functions give the ability to organize our code into chunks and give those chunks names. This makes the code easier to understand and to reason about.
+
+Functions allow us to store a line of code to be used as many times as we wish. This saves us from having to rewrite the same code many times and follows the DRY principle (Don't Repeat Yourself). 
 
 <br>
 <hr>
 
-## INVOKING A FUNCTION
+## CALLING A FUNCTION MANY TIMES
 
-```javascript
-printBoo();
-printBoo();
-printBoo();
+A function can be called many times and in this case will give us the same output every time.
+```js
+function logAlert() {
+  console.log('Ah ah ah... you didn\'t say the magic word.');
+}
+
+logAlert();
+logAlert();
+logAlert();
+logAlert();
+logAlert();
 ```
 
-Simply use the name of the variable and use **parentheses** to invoke the function.
+## PARAMETERS
 
-If the parentheses are not included, the function will not run.
+Functions can take in information and then act on that information in the form of **parameters**.
 
-The invocation comes **after** the function definition. If you write it beforehand, it will be trying to invoke something that doesn't yet exist according to the interpreter.
+In this case the `printGreeting` function takes in a name **parameter** and prints out a custom message with the name inserted.
+```js
+function printGreeting(name) {
+  console.log(`Welcome ${name}`);
+}
 
-This will work:
+const firstName = 'Yash';
 
-```javascript
-const printBoo = () => {
-	console.log('======');
-	console.log('Boo!');
-	console.log('======');
-};
+printGreeting(firstName);
+```
+When calling `printGreeting(firstName)` the value we pass to it is refered to as an **argument**. When defining the function the values pass in are refered to as **parameters**.
 
-printBoo();
+## PASSING MULTIPLE PARAMETERS
+
+We have the ability to pass many parameters to a function.
+
+We've set up this function to take in 3 parameters and print out a longer greeting with the three values inserted.
+
+```js
+function printLongGreeting(name, numberOfMessages, dayOfWeek) {
+  console.log(`Welcome ${name}. Today is ${dayOfWeek}. You have ${numberOfMessages} messages.`);
+}
+
+printLongGreeting('Sam', 12, 'Friday');
 ```
 
-VS
+Often we will pass variables as the arguments to the function when we call it.
+```js
+const userName = 'Roberta';
+const usersMessages = 30;
+const currentDayOfWeek = 'Thursday';
 
-This will not:
-
-```javascript
-printBoo();
-
-const printBoo = () => {
-	console.log('======');
-	console.log('Boo!');
-	console.log('======');
-};
+printLongGreeting(userName, usersMessages, currentDayOfWeek);
 ```
 
-<br>
-<hr>
+## EXCERSIZE
 
-&#x1F535; **Activity**
+Write a function that will log out a person's order at a restuarant, that takes in three **parameters**, the person's name, a menu item, and their table number.
 
-* Write a function `printSum` that will console.log the result of 10 + 10
+<details>
+  <summary>Solution:</summary>
 
-&#x1F535; **Extra**
+  ```js
+  function printOrder(orderName, menuItem, tableNumber) {
+    console.log(`${menuItem} for ${orderName} at table #${tableNumber}`);
+  }
+  ```
+</details>
 
-* Write a function `printTriangle` that will print these pound signs to the console (there are 5 console.logs inside the function):
+## RETURNING A VALUE FROM A FUNCTION
 
-```
-#
-##
-###
-####
-#####
-```
+A function can also return a value.
+This function takes in 2 numbers and returns the sum of those numbers.
+```js
+function getTheSum(a, b) {
+  return a + b;
+}
 
-&#x1F535; **Challenge**
+const totalApples = 20;
+const totalBananas = 10;
 
-* Make it so that `printTriangle` will print the pound signs using a for loop (there is only 1 console.log inside the function).  
+// Simply calling the function will not do anything in this case.
+getTheSum(totalApples, totalBananas);
 
-<br>
-<hr>
+// Instead, that return value can be stored in a variable for later use, like so.
+const sum = getTheSum(totalApples, totalBananas);
 
-## NAMING FUNCTIONS
-
-Always use **const** to declare your functions. It would be a strange day when a function would need to be reassigned. 
-
-The variable you use for a function should contain a **verb**. Functions **do** something, most often:
-
-* getting data
-* setting data
-* checking data
-* printing data
-
-If the purpose of your function is to check data, for example, use the verb `check` in the variable name.
-
-Example function that contains a conditional:
-
-```javascript
-const checkInputLength = (input) => {
-	if (input.length > 10) {
-		console.log('input length is greater than 10');
-	} else {
-		console.log('input length is not greater than 10');
-	}
-};
+console.log(sum);
 ```
 
-Functions should try to do **one thing** and **do it well**.
+## MORE PRACTICE WITH RETURN
 
-If a function, called `checkInputLength`, does more than just check input, or doesn't do it very well, then it is a poor function.
+This function takes in 3 pieces of information, the itemName, the price, and the mustGoByDate, and prints out a message using those 3 pieces of information.
+```js
+function returnAdMessage(itemName, price, mustGoByDate) {
+  return `I am selling ${itemName} for ${price}. It must go by ${mustGoByDate}.`;
+}
 
-Takeaway: Think about appropriate **verbs** to use in your function variable names. The verns should indicate the **one thing** that the function does.
+const item = 'Lamp';
+const price = 50;
+const date = 'tomorrow';
 
-<br>
+const message = returnAdMessage(item, price, date);
 
-## ARGUMENTS AND PARAMETERS
+console.log(message);
+```
+The function returns a value. We can store this return value in a variable and then log out the variable.
 
-The preceding function, `checkInputLength` had a parameter called `input`.
 
-We can write functions that take in a type of variable called a **parameter**. By giving our functions some kind of variable input, we make them much more flexible.
 
-In the below example, the parameter is arbitrarily called `name` (we can call our parameters whatever we want - whatever makes semantic sense).
+This function takes in 3 pieces of information, breakfastItem, currentDayOfWeek and the rating and returns a message using those 3 pieces of information.
 
-&#x1F535; **Watch**
+```js
+function printBreakfast(breakfastItem, day, rating) {
+  return `Today is ${day}. I ate ${breakfastItem}. I give a ${rating} out of 10`;
+}
 
-Using **interpolation** I can put the input into a string:
+const todayBreakfast = 'Omelet';
+const today = 'Monday';
+const breakfastRating = 6;
 
-```javascript
-const sayName = (name) => {
-	console.log('Hello! My name is ' + name);
+const message = getMessage(todayBreakfast, today, breakfastRating);
+
+console.log(message);
+```
+
+
+<!-- // REVIEW ON FOR LOOPS
+
+This will add up all the numbers from 0 to 9 and log out the total.
+
+```js
+let numbersSum = 0;
+
+for (let i = 0; i < 10; i++) {
+  numbersSum += i;
+}
+
+console.log(numbersSum);
+``` -->
+
+## CONDITIONALS WITH FUNCTIONS
+
+This function returns a message based on if the value passed in (hasFood) is true or false.
+
+```js
+const hasFoodInFridge = false;
+
+function getFoodMessage(hasFood) {
+  if (hasFood) {
+    return 'You are good to go';
+  } else {
+    return 'Time to get some groceries';
+  }
+}
+
+const foodMessage = getFoodMessage(hasFoodInFridge);
+
+console.log(foodMessage);
+```
+Because the function returns a value, in order to get access to the value we store it in a variable with...
+```js
+const foodMessage = getFoodMessage(hasFoodInFridge);
+```
+After that we can log out the variable.
+
+## MORE CONDITIONALS WITH FUNCTIONS
+
+This function will return a message based on if isAdmin and isLoggedIn is true.
+
+```js
+function getLoginMessage(isAdmin, isLoggedIn) {
+  if (isLoggedIn && isAdmin) {
+    return 'Welcome admin user.';
+
+  } else if (isLoggedIn && !isAdmin) {
+    return 'Welcome website user.';
+    
+  } else {
+    return 'You are not logged in.';
+
+  }
+}
+
+const loginMessage = getLoginMessage(false);
+console.log(loginMessage);
+```
+
+Hopefully we are starting to see how we can use functions to our advantage here. We can think of functions like a black box that take in some input and return an output. When we call our function we need to know about all the details happening inside. When calling the function we are just concerned with the information we give it, the **parameters** and the value that is outputed, the **return value**.
+
+<details>
+  <summary>Here is the visual again</summary>
+
+  ![Function-Machine](./images/function_machine.png)
+</details>
+
+
+## BREIF REVIEW ON FOR LOOPS
+
+Here we loop through each student in the list and log them out.
+
+```js
+const students = [
+  'Shawna',
+  'Sam',
+  'Sri',
+  'Simone'
+];
+
+for (let i = 0; i < students.length; i++) {
+  console.log(students[i]);
 }
 ```
 
-When we _invoke_ the function, we can specify the value of the parameter, this is called an **argument**:
+## COMBINING LOOPS WITH FUNCTIONS
 
-```javascript
-sayName("Frodo");
-```
+This function will loop through the list that is provided and if it finds an item that matches itemToCheck it will return true. If the itemToCheck is not found in the list, the function will return false.
+```js
+const groceryList = [
+  'spanich',
+  'beans',
+  'eggs',
+  'watermelon',
+  'blueberries',
+];
 
-We can continue to invoke the function with whatever **arguments** we want:
+function listHasItem(list, itemToCheck) {
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] === itemToCheck) {
+      return true;
+    }
+  }
 
-```javascript
-sayName("Merry");
-sayName("Pippin");
-sayName("Sam");
-```
-
-Each time, the output of the function will change to reflect the argument.
-
-## Argument vs Parameter
-
-The **argument** is the input, the **parameter** is how the input is represented in the function.
-
-```javascript
-const func = (PARAMETER) => {
-	// some code
+  return false;
 }
 
-func(ARGUMENT);
+const hasItem = listHasItem(groceryList, 'soup');
+
+console.log(hasItem);
 ```
 
-<br>
+This function will loop through a list and return a formatted version of the list turned into a string.
 
-&#x1F535; **Activity (10 min)**
+```js
+function getGroceryList(list) {
+  let stringResult = '';
 
-* Write a function `printParameter` that takes a parameter `input`. The function should simply console.log the value of the `input` parameter.
-* Invoke the function with an argument.
+  for (let i = 0; i < list.length; i++) {
+    stringResult += `${i + 1}. ${list[i]}\n`;
+  }
 
-&#x1F535; **Extra**
-
-* Write a function called `minusOne` that takes a parameter `num`. Assuming the argument is a number, print the argument -1.
-
-```javascript
-minusOne(10);        // 9
-minusOne(100);       // 99
-minusOne(Infinity);  // Infinity
-```
-
-&#x1F535; **Extra**
-
-* Write a function called `getLastElement` that takes a parameter `arr`.
-* Invoke the function with an **array** as the argument.
-* The function should print the **last element** within the array.
-
-```javascript
-getLastElement([1, 2, 3, 4, 5, 6]);       // 6
-getLastElement(['a', 'b', 'c']);          // 'c'
-getLastElement([[1, 2, 3], [4, 5, 6]]);   // [4, 5, 6]
-```
-
-_Hint:_ `arr[arr.length - 1]`
-
-<br>
-<hr>
-
-## Multiple Parameters
-
-We can use multiple parameters in our functions. A function can take any number of parameters.
-
-```javascript
-const multiply = (num1, num2) => {
-	console.log(num1 * num2);
+  return stringResult;
 }
+
+const coolGroceryList = getGroceryList(groceryList);
+
+console.log(coolGroceryList);
 ```
 
-When you invoke the function, you generally want to supply the right number of arguments.
+## FUNCTIONS AND ARRAYS
 
-```javascript
-multiply(4, 4)
+We learned that arrays are a very handy way of storing related data. Let's take a look at combining them with functions.
 
-=> 16
+### ACTIVITY 1
+
+Write a function that takes in an array of grocery items as a **parameter** and returns just the first item in that list.
+
+<details>
+  <summary>Solution: </summary>
+
+  ```js
+  function getFirstItem(groceryList) {
+    return groceryList[0];
+  }
+
+  const myList = ['spinach', 'tomato sauce', 'pickles'];
+
+  const firstItem = getFirstItem(myList);
+
+  console.log(firstItem);
+  ```
+</details>
+
+### ACTIVITY 2
+
+This time write a function that will take in an array of grocery items and return the array with the first item removed.
+
+For example, our function should take this as a **parameter**
+```js
+const myList = ['spinach', 'tomato sauce', 'pickles'];
+```
+and return this.
+```js
+['tomato sauce', 'pickles'];
 ```
 
-&#x1F535; **Activity**
+Do some research to see how you can remove the first item from an array.
 
-* Write a function `makeSentence` that takes **three** parameters and **interpolates** them into a fully formed sentence.
+Hint: Google `javascript remove first item from array`.
 
-```javascript
-makeSentence('I', 'want', 'chimichangas');
+<details>
+  <summary>Solution:</summary>
+
+  Eventually you may come across the [shift](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift) method with JavaScript.
+
+  Read the [documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift) take a moment to see if you can understand how it's working.
+
+  ```js
+  function removeFirstItem(groceryList) {
+    groceryList.shift();
+
+    return groceryList;
+  }
+
+  const myList = ['spinach', 'tomato sauce', 'pickles'];
+
+  const updatedList = removeFirstItem(myList);
+
+  console.log(updatedList);
+  ```
+</details>
+
+### ACTIVITY 3
+
+Write a function that takes an array of grocery items as its first **parameter** and a grocery item as its second **parameter**. This function should return true or false indicating whether or not the array includes the item.
+
+Calling the function would look like this.
+
+```js
+const hasItem = doesListHaveItem(myGroceryList, item);
 ```
 
-> => 'Oh boy, do I want chimichangas or what?'
+Do some research to see how to check if an array includes an item.
 
-&#x1F535; **Extra**
+Hint: Google `javascript check if array has a particular item`.
 
-* Write a function `divideThreeNums` that takes **three** parameters and prints the third parameter divided by the result of the second parameter divided by the first.
+<details>
+  <summary>Solution:</summary>
 
-```javascript
-divideThreeNums(10, 5, 2)   // 4
-divideThreeNums(30, 2, 9)   // 135
-```
+  After googling you might eventually come across the [`.includes`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) method with JavaScript.
 
+  Read the [documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) take a moment to see if you can understand how it's working.
 
-<br>
-<hr>
+  ```js
+  function doesListHaveItem(groceryList, itemToCheck) {
+    return groceryList.includes(itemToCheck);
+  }
 
-## RETURN
+  const myList = ['spinach', 'tomato sauce', 'pickles'];
 
-* `return` gives a function its value.
-* `return` stops the function.
+  const hasItem = doesListHaveItem(myList, 'cookies');
 
-## return: give a function value
+  console.log(hasItem);
+  ```
+</details>
 
-We specify the output of a function with the `return` statement. The `return` statement is different from `console.log()` in that we can use the _return value_ of a function to pass as data, whereas we cannot with a `console.log()`.
+## FUNCTION EXPRESSIONS
 
-A contrived example:
+A function expression is another way to define a function. Here we define a function without a name and store it in a variable.
 
-```javascript
-const ten = () => {
-	return 10;
+```js
+const newFunction = function() {
+  console.log('newFunction was called!');
 }
+
+newFunction();
 ```
+Defining a function without a name, as we do on the right hand side of the equal sign is referred to as defining an anonymous function.
 
-```javascript
-console.log(8 + ten());
+## ARROW FUNCTIONS
 
-=> 18
-```
+A newer version of JavaScript (ES6 / ES2015) allows us to write a function with the following syntax.
 
-This is the main difference between `return` and `console.log()`. The output value of a function can not come from a console.log.
-
-```javascript
-const ten = () => {
-	console.log(10);
+```js
+const anotherFunction = (name) => {
+  console.log(`Hey ${name}, anotherFunction was called!`);
 }
+
+anotherFunction('Lenny'); 
 ```
-
-```javascript
-console.log(8 + ten());
-
-=> 10
-=> NaN
-```
-
-This is because it is trying to add 8 to `undefined`.
-
-A function is only **defined** if it has a return value.
-
-```javascript
-const multiply = function(num1, num2) {
-	return num1 * num2;
-}
-```
-
-The `multiply` function has a **return value** of `num1` * `num2`. It does not just print to the console.
-
-## console.log a function with a return value
-
-Sometimes a returned value will not appear in your console. This is normal. **A return is not a console.log**. To see the return value of a function, you will want to console.log the invocation:
-
-```javascript
-console.log(multiply(2, 10));
-```
-
-> => 20
-
-- Since `multiply` **returns** a value, we can use the return value of `multiply` as an argument to an invocation of `multiply`.
-
-```javascript
-console.log(multiply(multiply(2, 3), multiply(9, 4)));
-```
-
-> => 216
-
-## return: stopping a function
-
-**RETURN** sends the value of your function immediately. You can use **return** to terminate the function.
-
-Example: will the function return 0 or 1? (It won't return both)
-
-```javascript
-const example = (input) => {
-	if (input == "none") return 0;
-	return 1;
-};
-```
-
-```javascript
-example("none")     // 0
-example("two");     // 1
-```
-
-&#x1F535; **Activity**
-
-* Write a function `calculateArea` that takes two parameters `width` and `length` and multiplies them. This will give us the area of a rectangle.
-* Invoke the function a couple of times with different arguments each time
-
-&#x1F535; **Activity and Research**
-
-* Write a function that takes three parameters (numbers), sums them, converts the sum into a string and returns the string (eg. `"123"`)
-* Use your google-fu to research converting a number into a string
-* Invoke the function a couple of times with different arguments each time
-
-&#x1F535; **Extra**
-
-* Write a function that takes two parameters (strings) and returns `true` (Boolean) if the two strings are identical, `false` if not.
-
-&#x1F535; **Experiment**
-
-* What happens if you supply more arguments than there are parameters?
-* What happens if you supply fewer arguments than there are parameters?
-
-<br>
-<hr>
-
-# Problem-solving
-
-### Palindrome
-
-Writing a function to determine if a word is a Palindrome.
-
-Pseudo-code and work in layers, one layer at a time. Don't jump ahead until each piece has been tested and works.
-
-* reverse the word (how?)
-* check if the word is the same as the reverse (how?)
-* return true or false
-
-<br>
-<hr>
 
 # Extra stuff: more on built-in methods
 
