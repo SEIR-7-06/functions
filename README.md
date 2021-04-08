@@ -34,12 +34,120 @@ while (num < 5) {
 }
 ```
 
-```js
-const fruits ['apple', 'banana', 'orange', 'pear'];
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 
-for (let i = 0; i <= 5; i++) {
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+
+```js
+const fruits = ['apple', 'banana', 'orange', 'pear'];
+
+fruits[0];
+fruits[1];
+fruits[2];
+
+for (let i = 0; i <= fruits.length; i++) {
 	console.log(fruits[i]);
 }
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+// - Write out Psuedocode with class
+// See if fruit exists in our list of fruits
+// Get a boolean true or false
+
+// Loop through list of fruits
+  // for each fruit
+    // check if it equals the item we are looking for
+
+const fruits = ['apple', 'banana', 'orange', 'pear'];
+const itemToCheck = 'orange';
+
+let hasItem = false;
+
+for (let i = 0; i < fruits.length; i++) {
+  if (fruits[i] === itemToCheck) {
+    hasItem = true;
+  }
+}
+
+console.log(hasItem);
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+Get first letter of each person's name
+
+const students = [
+  'Austin',
+  'Amanda',
+  'Fariba',
+  'Alex',
+  'Alex',
+  'Dorothy',
+  'Michelle',
+  'Neha',
+  'Elissa'
+];
+
+// What we want
+const firstLetters = ['A','A','F','A','A','D','M','N','E'];
+
+// Psuedocode
+// - Loop through list of stuents
+  // - For each student
+    // - Get first letter
+
+const firstLetters = [];
+
+for (let i = 0; i < students.length; i++) {
+  const student = students[i];
+  const first = student[0];
+
+  firstLetters.push(first);
+}
+
+console.log(firstLetters);
+
+/////////////////////////////////////////////////
+
+Find out who has the longest name
+
+const students = [
+  'Austin',
+  'Amanda',
+  'Fariba',
+  'Alex',
+  'Alex',
+  'Dorothy',
+  'Michelle',
+  'Neha',
+  'Elissa'
+];
+
+// Loop through the array
+// Check the length of each person's name
+// See if it is longer than the longest one we have seen so far
+
+for (let i = 0; i < students.length; i++) {
+  console.log(students[i])
+}
+
+let longestName = '';
+
+for (let i = 0; i < students.length; i++) {
+  const nameLength = students[i].length;
+
+  if (nameLength > longestName.length) {
+    longestName = stidents[i];
+  }
+}
+
+console.log(longestName);
+
 ``` -->
 
 ## WHAT IS A FUNCTION?
@@ -49,6 +157,9 @@ Functions are a powerful construct in programming that allow us to organize our 
 ![Function-Machine](./images/function_machine.png)
 
 Say for example, we wanted a function that would tell us the first item on our grocery list. We could create a function that would take a grocery list as its input and return the first item on the list as its output.
+
+<br>
+<hr>
 
 ## DEFINING A FUNCTION
 
@@ -67,11 +178,14 @@ func();
 ```
 To call the function simply include the name of the function followed by a set of openning and closing parentheses.
 
+<br>
+<hr>
+
 ### WHY FUNCTIONS?
 
 Functions give the ability to organize our code into chunks and give those chunks names. This makes the code easier to understand and to reason about.
 
-Functions allow us to store a line of code to be used as many times as we wish. This saves us from having to rewrite the same code many times and follows the DRY principle (Don't Repeat Yourself). 
+Functions allow us to store a line of code for later to be used as many times as we wish. This saves us from having to rewrite the same code many times. It follows the DRY principle (Don't Repeat Yourself).
 
 <br>
 <hr>
@@ -91,6 +205,9 @@ logAlert();
 logAlert();
 ```
 
+<br>
+<hr>
+
 ## PARAMETERS
 
 Functions can take in information and then act on that information in the form of **parameters**.
@@ -106,6 +223,9 @@ const firstName = 'Yash';
 printGreeting(firstName);
 ```
 When calling `printGreeting(firstName)` the value we pass to it is refered to as an **argument**. When defining the function the values pass in are refered to as **parameters**.
+
+<br>
+<hr>
 
 ## PASSING MULTIPLE PARAMETERS
 
@@ -130,7 +250,10 @@ const currentDayOfWeek = 'Thursday';
 printLongGreeting(userName, usersMessages, currentDayOfWeek);
 ```
 
-## EXCERSIZE
+<br>
+<hr>
+
+## EXERCISE
 
 Write a function that will log out a person's order at a restuarant, that takes in three **parameters**, the person's name, a menu item, and their table number.
 
@@ -144,7 +267,10 @@ Write a function that will log out a person's order at a restuarant, that takes 
   ```
 </details>
 
-## RETURNING A VALUE FROM A FUNCTION
+<br>
+<hr>
+
+## RETURNING A VALUE
 
 A function can also return a value.
 This function takes in 2 numbers and returns the sum of those numbers.
@@ -164,6 +290,9 @@ const sum = getTheSum(totalApples, totalBananas);
 
 console.log(sum);
 ```
+
+<br>
+<hr>
 
 ## MORE PRACTICE WITH RETURN
 
@@ -201,7 +330,10 @@ const message = getMessage(todayBreakfast, today, breakfastRating);
 console.log(message);
 ```
 
-# FUNCTIONS WITHOUT RETURN
+<br>
+<hr>
+
+## FUNCTIONS WITHOUT RETURN
 
 If you leave out the `return` value in a function it will return `undefined`.
 
@@ -230,6 +362,9 @@ function printGreeting(name) {
   return undefined;
 }
 ```
+
+<br>
+<hr>
 
 ## RETURN EXITS THE FUNCTION
 
@@ -265,6 +400,9 @@ for (let i = 0; i < 10; i++) {
 console.log(numbersSum);
 ``` -->
 
+<br>
+<hr>
+
 ## CONDITIONALS WITH FUNCTIONS
 
 This function returns a message based on if the value passed in (hasFood) is true or false.
@@ -289,6 +427,9 @@ Because the function returns a value, in order to get access to the value we sto
 const foodMessage = getFoodMessage(hasFoodInFridge);
 ```
 After that we can log out the variable.
+
+<br>
+<hr>
 
 ## MORE CONDITIONALS WITH FUNCTIONS
 
@@ -320,6 +461,8 @@ Hopefully we are starting to see how we can use functions to our advantage here.
   ![Function-Machine](./images/function_machine.png)
 </details>
 
+<br>
+<hr>
 
 ## BREIF REVIEW ON FOR LOOPS
 
@@ -337,6 +480,9 @@ for (let i = 0; i < students.length; i++) {
   console.log(students[i]);
 }
 ```
+
+<br>
+<hr>
 
 ## COMBINING LOOPS WITH FUNCTIONS
 
@@ -382,6 +528,9 @@ const coolGroceryList = getGroceryList(groceryList);
 
 console.log(coolGroceryList);
 ```
+
+<br>
+<hr>
 
 ## FUNCTIONS AND ARRAYS
 
@@ -480,6 +629,9 @@ Hint: Google `javascript check if array has a particular item`.
   ```
 </details>
 
+<br>
+<hr>
+
 ## FUNCTION EXPRESSIONS
 
 A function expression is another way to define a function. Here we define a function without a name and store it in a variable.
@@ -493,6 +645,9 @@ newFunction();
 ```
 Defining a function without a name, as we do on the right hand side of the equal sign is referred to as defining an anonymous function.
 
+<br>
+<hr>
+
 ## ARROW FUNCTIONS
 
 A newer version of JavaScript (ES6 / ES2015) allows us to write a function with the following syntax.
@@ -505,11 +660,9 @@ const anotherFunction = (name) => {
 anotherFunction('Lenny'); 
 ```
 
-# Extra stuff: more on built-in methods
+# EXTRA STUFF TO TRY OUT
 
 ## String and array methods
-
-**Refresher**
 
 A method can be chained to a variable to perform an action. Example:
 
