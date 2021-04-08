@@ -201,6 +201,55 @@ const message = getMessage(todayBreakfast, today, breakfastRating);
 console.log(message);
 ```
 
+# FUNCTIONS WITHOUT RETURN
+
+If you leave out the `return` value in a function it will return `undefined`.
+
+Take one of our earlier examples.
+
+```js
+function printGreeting(name) {
+  console.log(`Welcome ${name}`);
+}
+```
+Here we are logging out a value but we are not returning anything.
+
+Let's try to store the return value in a variable and then log out that variable.
+
+```js
+const greeting = printGreeting('Sally');
+
+console.log(greeting);
+```
+
+Under the hood our function actually looks like this.
+
+```js
+function printGreeting(name) {
+  console.log(`Welcome ${name}`);
+  return undefined;
+}
+```
+
+## RETURN EXITS THE FUNCTION
+
+A return statement will exit the function, meaning nothing under the `return` statement will run.
+
+Take for example our example that takes in a first name and a last name and returns the full name.
+```js
+function getFullName(firstName, lastName) {
+  return `${firstName} ${lastName}`;
+
+  console.log('After the return.');
+}
+
+const fullName = getFullName('Fran', 'Babbage');
+
+console.log('After calling the function.');
+```
+We will never see the `After the return` in our console. The function will return a value and exit the function before it even gets to that line of code.
+
+Create your own example and try this out for yourself.
 
 <!-- // REVIEW ON FOR LOOPS
 
