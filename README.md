@@ -57,7 +57,7 @@ We will start with the basic structure for now and not worry about inputs and ou
 To define a function we include the `function` keyword followed by the function name, a set of parentheses and then the body of the function.
 ```javascript
 function func() {
-	console.log('This should be called later');
+	console.log('This will be called later');
 }
 ```
 This code by itself will not run. To run this code we can call or **invoke** the function like so.
