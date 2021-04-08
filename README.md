@@ -52,7 +52,7 @@ Say for example, we wanted a function that would tell us the first item on our g
 
 ## DEFINING A FUNCTION
 
-We will start with the basic structure for now and not worry about inputs and output.
+Let's start with the basic structure of a function.
 
 To define a function we include the `function` keyword followed by the function name, a set of parentheses and then the body of the function.
 ```javascript
