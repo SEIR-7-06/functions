@@ -214,6 +214,11 @@ logAlert();
 <br>
 <hr>
 
+Practice defining your own function that logs out a message. And then call that function as many times as you want.
+
+<br>
+<hr>
+
 ## PARAMETERS
 
 Functions can take in information and then act on that information in the form of **parameters**.
@@ -224,7 +229,7 @@ function printGreeting(name) {
   console.log(`Welcome ${name}`);
 }
 
-const firstName = 'Yash';
+const firstName = 'Jane';
 
 printGreeting(firstName);
 ```
@@ -261,7 +266,7 @@ printLongGreeting(userName, usersMessages, currentDayOfWeek);
 
 ## EXERCISE
 
-Write a function that will log out a person's order at a restuarant, that takes in three **parameters**, the person's name, a menu item, and their table number.
+Write a function that will log out a person's order at a restuarant, that takes in three **parameters**, the person's name, a menu item, and their table number. Then try calling the function passing it arguments.
 
 <details>
   <summary>Solution:</summary>
@@ -270,6 +275,8 @@ Write a function that will log out a person's order at a restuarant, that takes 
   function printOrder(orderName, menuItem, tableNumber) {
     console.log(`${menuItem} for ${orderName} at table #${tableNumber}`);
   }
+
+  printOrder('spaghetti', 'Jane', 5);
   ```
 </details>
 
@@ -317,7 +324,6 @@ const message = returnAdMessage(item, price, date);
 console.log(message);
 ```
 The function returns a value. We can store this return value in a variable and then log out the variable.
-
 
 
 This function takes in 3 pieces of information, breakfastItem, currentDayOfWeek and the rating and returns a message using those 3 pieces of information.
