@@ -156,7 +156,13 @@ Functions are a powerful construct in programming that allow us to organize our 
 
 ![Function-Machine](./images/function_machine.png)
 
+<br>
+
+<hr>
+
 Say for example, we wanted a function that would tell us the first item on our grocery list. We could create a function that would take a grocery list as its input and return the first item on the list as its output.
+
+![Get-first-item](./images/get-first-item.png)
 
 <br>
 <hr>
